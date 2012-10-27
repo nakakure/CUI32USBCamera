@@ -24,6 +24,8 @@ c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../.
                               c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib/crt0.o (_general_exception_context)
 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
                               c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(general-exception.o) (_general_exception_handler)
+c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libm.a(fp32.o)
+                              Objects\C32\tjpgd.o (fpmul)
 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
                               Objects\C32\usb_host.o (malloc)
 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
@@ -36,11 +38,15 @@ c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../.
 Allocating common symbols
 Common symbol       size              file
 
+isocData            0x18              Objects\C32\main.o
 deviceAddress       0x1               Objects\C32\main.o
+param               0x22              Objects\C32\main.o
 usbOverrideHostState
                     0x2               Objects\C32\usb_host.o
 DemoState           0x4               Objects\C32\main.o
+jpeg                0xa000            Objects\C32\main.o
 gc_DevData          0x10              Objects\C32\usb_host_generic.o
+temp                0x22              Objects\C32\main.o
 DataPacket          0x8               Objects\C32\main.o
 LCDText             0x21              Objects\C32\LCDBlocking.o
 
@@ -49,35 +55,36 @@ Microchip PIC32 Memory-Usage Report
 kseg0 Program-Memory Usage
 section                    address  length [bytes]      (dec)  Description
 -------                 ----------  -------------------------  -----------
-.text                   0x9d000020         0x9a48       39496  App's exec code 
-.rodata                 0x9d009a68          0x2a4         676  Read-only const 
-.text.malloc            0x9d009d0c          0x288         648   
-.text._sbrk_init        0x9d009f94          0x194         404   
-.text.realloc           0x9d00a128          0x17c         380   
-.text                   0x9d00a2a4           0xf0         240  App's exec code 
-.text.general_exception 0x9d00a394           0xd0         208   
-.text._sbrk             0x9d00a464           0xc4         196   
-.text                   0x9d00a528           0xa8         168  App's exec code 
-.dinit                  0x9d00a5d0           0xa0         160   
-.text.sbrk              0x9d00a670           0x50          80   
-.text                   0x9d00a6c0           0x38          56  App's exec code 
-.text.INTEnableSystemMu 0x9d00a6f8           0x34          52   
-.text.memcpy            0x9d00a72c           0x2c          44   
-.text._stub_sbd_memlayo 0x9d00a758           0x2c          44   
-.text.free              0x9d00a784           0x24          36   
-.text.INTRestoreInterru 0x9d00a7a8           0x1c          28   
-.text.CheKseg0CacheOff  0x9d00a7c4           0x18          24   
-.text.CheKseg0CacheOn   0x9d00a7dc           0x18          24   
-.text                   0x9d00a7f4           0x18          24  App's exec code 
-.rodata                 0x9d00a80c           0x10          16  Read-only const 
-.text._bootstrap_except 0x9d00a81c            0xc          12   
-.text._general_exceptio 0x9d00a828            0xc          12   
-.text.INTDisableInterru 0x9d00a834            0x8           8   
-.text.INTEnableInterrup 0x9d00a83c            0x8           8   
-.text._on_reset         0x9d00a844            0x8           8   
-.text._on_bootstrap     0x9d00a84c            0x8           8   
-.text.getpagesize       0x9d00a854            0x8           8   
-      Total kseg0_program_mem used  :      0xa83c       43068  8.2% of 0x80000
+.text                   0x9d000020         0xf46c       62572  App's exec code 
+.rodata                 0x9d00f48c          0xa74        2676  Read-only const 
+.text.malloc            0x9d00ff00          0x288         648   
+.text._sbrk_init        0x9d010188          0x194         404   
+.text.realloc           0x9d01031c          0x17c         380   
+.text                   0x9d010498           0xf0         240  App's exec code 
+.text.general_exception 0x9d010588           0xd0         208   
+.dinit                  0x9d010658           0xc8         200   
+.text._sbrk             0x9d010720           0xc4         196   
+.text                   0x9d0107e4           0xa8         168  App's exec code 
+.rodata                 0x9d01088c           0x70         112  Read-only const 
+.text.sbrk              0x9d0108fc           0x50          80   
+.text                   0x9d01094c           0x38          56  App's exec code 
+.text.INTEnableSystemMu 0x9d010984           0x34          52   
+.text.memcpy            0x9d0109b8           0x2c          44   
+.text._stub_sbd_memlayo 0x9d0109e4           0x2c          44   
+.text.free              0x9d010a10           0x24          36   
+.text.INTRestoreInterru 0x9d010a34           0x1c          28   
+.text.CheKseg0CacheOff  0x9d010a50           0x18          24   
+.text.CheKseg0CacheOn   0x9d010a68           0x18          24   
+.text                   0x9d010a80           0x18          24  App's exec code 
+.rodata                 0x9d010a98           0x10          16  Read-only const 
+.text._bootstrap_except 0x9d010aa8            0xc          12   
+.text._general_exceptio 0x9d010ab4            0xc          12   
+.text.INTDisableInterru 0x9d010ac0            0x8           8   
+.text.INTEnableInterrup 0x9d010ac8            0x8           8   
+.text._on_reset         0x9d010ad0            0x8           8   
+.text._on_bootstrap     0x9d010ad8            0x8           8   
+.text.getpagesize       0x9d010ae0            0x8           8   
+      Total kseg0_program_mem used  :     0x10ac8       68296  13.0% of 0x80000
 
 kseg0 Boot-Memory Usage
 section                    address  length [bytes]      (dec)  Description
@@ -98,31 +105,31 @@ section                    address  length [bytes]      (dec)  Description
 .bev_excpt              0xbfc00380           0x10          16  BEV-Exception 
          Total kseg1_boot_mem used  :       0x204         516  44.2% of 0x490
         --------------------------------------------------------------------------
-         Total Program Memory used  :      0xaa58       43608  8.2% of 0x81e00
+         Total Program Memory used  :     0x10ce4       68836  12.9% of 0x81e00
         --------------------------------------------------------------------------
 
 
 kseg1 Data-Memory Usage
 section                    address  length [bytes]      (dec)  Description
 -------                 ----------  -------------------------  -----------
-.sdata                  0xa0000000            0x8           8  Small init data 
-.sbss                   0xa0000008           0x58          88  Small uninit data 
-.bss                    0xa0000060           0x34          52  Uninitialized data 
-.bss                    0xa0000094           0x1c          28  Uninitialized data 
-.data                   0xa00000b0           0x10          16  Initialized data 
-.bss                    0xa00000c0           0x10          16  Uninitialized data 
-.bss                    0xa0000200          0x200         512  Uninitialized data 
-         Total kseg1_data_mem used  :       0x2d0         720  0.5% of 0x20000
+.sdata                  0xa0000000            0xc          12  Small init data 
+.sbss                   0xa000000c           0x78         120  Small uninit data 
+.bss                    0xa0000084         0xa094       41108  Uninitialized data 
+.bss                    0xa000a118           0x1c          28  Uninitialized data 
+.data                   0xa000a134           0x10          16  Initialized data 
+.bss                    0xa000a144           0x10          16  Uninitialized data 
+.bss                    0xa000a200          0x200         512  Uninitialized data 
+         Total kseg1_data_mem used  :      0xa354       41812  31.9% of 0x20000
         --------------------------------------------------------------------------
-            Total Data Memory used  :       0x2d0         720  0.5% of 0x20000
+            Total Data Memory used  :      0xa354       41812  31.9% of 0x20000
         --------------------------------------------------------------------------
 
 
 Dynamic Data-Memory Reservation
 section                    address  length [bytes]      (dec)  Description
 -------                 ----------  -------------------------  -----------
-heap                    0xa0000408         0x2000        8192  Reserved for heap 
-stack                   0xa0002420        0x1dbd8      121816  Reserved for stack 
+heap                    0xa000a408         0x1fa0        8096  Reserved for heap 
+stack                   0xa000c3c0        0x13c38       80952  Reserved for stack 
 
         --------------------------------------------------------------------------
 
@@ -130,7 +137,7 @@ Discarded input sections
 
  .pdr           0x00000000       0xa0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib/crt0.o
  .reginfo       0x00000000       0x18 Objects\C32\main.o
- .pdr           0x00000000       0xa0 Objects\C32\main.o
+ .pdr           0x00000000       0xe0 Objects\C32\main.o
  .reginfo       0x00000000       0x18 Objects\C32\usb_config.o
  .pdr           0x00000000        0x0 Objects\C32\usb_config.o
  .reginfo       0x00000000       0x18 Objects\C32\LCDBlocking.o
@@ -140,9 +147,11 @@ Discarded input sections
  .reginfo       0x00000000       0x18 Objects\C32\usb_host_generic.o
  .pdr           0x00000000       0xa0 Objects\C32\usb_host_generic.o
  .reginfo       0x00000000       0x18 Objects\C32\usb_host.o
- .pdr           0x00000000      0x4c0 Objects\C32\usb_host.o
+ .pdr           0x00000000      0x520 Objects\C32\usb_host.o
  .reginfo       0x00000000       0x18 Objects\C32\Delay.o
  .pdr           0x00000000       0x40 Objects\C32\Delay.o
+ .reginfo       0x00000000       0x18 Objects\C32\tjpgd.o
+ .pdr           0x00000000      0x160 Objects\C32\tjpgd.o
  .reginfo       0x00000000       0x18 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib/./proc/32MX795F512H\processor.o
  .pdr           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib/./proc/32MX795F512H\processor.o
  .reginfo       0x00000000       0x18 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
@@ -169,6 +178,8 @@ Discarded input sections
  .pdr           0x00000000       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(general-exception.o)
  .reginfo       0x00000000       0x18 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
  .pdr           0x00000000       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
+ .reginfo       0x00000000       0x18 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libm.a(fp32.o)
+ .pdr           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libm.a(fp32.o)
  .reginfo       0x00000000       0x18 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
  .pdr           0x00000000       0x60 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
  .reginfo       0x00000000       0x18 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
@@ -205,8 +216,10 @@ LOAD Objects\C32\uart2.o
 LOAD Objects\C32\usb_host_generic.o
 LOAD Objects\C32\usb_host.o
 LOAD Objects\C32\Delay.o
+LOAD Objects\C32\tjpgd.o
                 0x00000001                __MPLAB_BUILD = 0x1
-                0x00002000                _min_heap_size = 0x2000
+                0x00000001                __MPLAB_DEBUG = 0x1
+                0x00001fa0                _min_heap_size = 0x1fa0
                 0x00000400                PROVIDE (_min_stack_size, 0x400)
 LOAD c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib/./proc/32MX795F512H\processor.o
 START GROUP
@@ -644,62 +657,71 @@ END GROUP
  *(.got)
                 0xa0000000                . = ALIGN (0x4)
 
-.sdata          0xa0000000        0x8
+.sdata          0xa0000000        0xc
                 0xa0000000                _sdata_begin = .
  *(.sdata .sdata.* .gnu.linkonce.s.*)
- .sdata         0xa0000000        0x8 Objects\C32\usb_config.o
-                0xa0000000                usbTPL
-                0xa0000008                . = ALIGN (0x4)
-                0xa0000008                _sdata_end = .
+ .sdata         0xa0000000        0x4 Objects\C32\main.o
+                0xa0000000                param_len
+ .sdata         0xa0000004        0x8 Objects\C32\usb_config.o
+                0xa0000004                usbTPL
+                0xa000000c                . = ALIGN (0x4)
+                0xa000000c                _sdata_end = .
 
 .lit8
  *(.lit8)
 
 .lit4
  *(.lit4)
-                0xa0000008                . = ALIGN (0x4)
-                0xa0000008                _data_end = .
-                0xa0000008                _bss_begin = .
+                0xa000000c                . = ALIGN (0x4)
+                0xa000000c                _data_end = .
+                0xa000000c                _bss_begin = .
 
-.sbss           0xa0000008       0x58
-                0xa0000008                _sbss_begin = .
+.sbss           0xa000000c       0x78
+                0xa000000c                _sbss_begin = .
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
- .sbss          0xa0000008       0x28 Objects\C32\usb_host.o
-                0xa0000014                pCurrentConfigurationDescriptor
-                0xa0000018                pDeviceDescriptor
- .sbss          0xa0000030       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
-                0xa0000030                __allocp
-                0xa0000034                __alloct
-                0xa0000038                __allocx
- .sbss          0xa0000040        0x8 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
-                0xa0000040                _minbrk
-                0xa0000044                _maxbrk
- .sbss          0xa0000048        0x4 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
-                0xa0000048                errno
+ .sbss          0xa000000c       0x20 Objects\C32\main.o
+ .sbss          0xa000002c       0x28 Objects\C32\usb_host.o
+                0xa0000038                pCurrentConfigurationDescriptor
+                0xa000003c                pDeviceDescriptor
+ .sbss          0xa0000054       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
+                0xa0000054                __allocp
+                0xa0000058                __alloct
+                0xa000005c                __allocx
+ .sbss          0xa0000064        0x8 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+                0xa0000064                _minbrk
+                0xa0000068                _maxbrk
+ .sbss          0xa000006c        0x4 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
+                0xa000006c                errno
  *(.scommon)
- .scommon       0xa000004c       0x10 Objects\C32\main.o
-                0xa000004c                deviceAddress
-                0xa0000050                DemoState
-                0xa0000054                DataPacket
- .scommon       0xa000005c        0x2 Objects\C32\usb_host.o
-                0xa000005c                usbOverrideHostState
-                0xa000005e                _sbss_end = .
-                0xa0000060                . = ALIGN (0x4)
- *fill*         0xa000005e        0x2 00
+ .scommon       0xa0000070       0x10 Objects\C32\main.o
+                0xa0000070                deviceAddress
+                0xa0000074                DemoState
+                0xa0000078                DataPacket
+ .scommon       0xa0000080        0x2 Objects\C32\usb_host.o
+                0xa0000080                usbOverrideHostState
+                0xa0000082                _sbss_end = .
+                0xa0000084                . = ALIGN (0x4)
+ *fill*         0xa0000082        0x2 00
 
-.bss            0xa0000060       0x34
+.bss            0xa0000084     0xa094
  *(.dynbss)
  *(COMMON)
- COMMON         0xa0000060       0x21 Objects\C32\LCDBlocking.o
-                0xa0000060                LCDText
- *fill*         0xa0000081        0x3 00
- COMMON         0xa0000084       0x10 Objects\C32\usb_host_generic.o
-                0xa0000084                gc_DevData
-                0xa0000094                . = ALIGN ((. != 0x0)?0x4:0x1)
-                0xa0000094                . = ALIGN (0x4)
-                0xa0000094                _end = .
-                0xa0000094                _bss_end = .
+ COMMON         0xa0000084     0xa05e Objects\C32\main.o
+                0xa0000084                isocData
+                0xa000009c                param
+                0xa00000c0                jpeg
+                0xa000a0c0                temp
+ *fill*         0xa000a0e2        0x2 00
+ COMMON         0xa000a0e4       0x21 Objects\C32\LCDBlocking.o
+                0xa000a0e4                LCDText
+ *fill*         0xa000a105        0x3 00
+ COMMON         0xa000a108       0x10 Objects\C32\usb_host_generic.o
+                0xa000a108                gc_DevData
+                0xa000a118                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0xa000a118                . = ALIGN (0x4)
+                0xa000a118                _end = .
+                0xa000a118                _bss_end = .
                 0x00020000                _bmxdudba_address = 0x20000
                 0x00020000                _bmxdupba_address = 0x20000
 
@@ -720,28 +742,29 @@ END GROUP
  *(.gptab.bss)
  *(.gptab.sbss)
 
-.mdebug.abi32   0xa0000094        0x0
+.mdebug.abi32   0xa000a118        0x0
  *(.mdebug.abi32)
- .mdebug.abi32  0xa0000094        0x0 Objects\C32\main.o
- .mdebug.abi32  0xa0000094        0x0 Objects\C32\usb_config.o
- .mdebug.abi32  0xa0000094        0x0 Objects\C32\LCDBlocking.o
- .mdebug.abi32  0xa0000094        0x0 Objects\C32\uart2.o
- .mdebug.abi32  0xa0000094        0x0 Objects\C32\usb_host_generic.o
- .mdebug.abi32  0xa0000094        0x0 Objects\C32\usb_host.o
- .mdebug.abi32  0xa0000094        0x0 Objects\C32\Delay.o
- .mdebug.abi32  0xa0000094        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
- .mdebug.abi32  0xa0000094        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
- .mdebug.abi32  0xa0000094        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
- .mdebug.abi32  0xa0000094        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
- .mdebug.abi32  0xa0000094        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
- .mdebug.abi32  0xa0000094        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
- .mdebug.abi32  0xa0000094        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
- .mdebug.abi32  0xa0000094        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
- .mdebug.abi32  0xa0000094        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
- .mdebug.abi32  0xa0000094        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
- .mdebug.abi32  0xa0000094        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
- .mdebug.abi32  0xa0000094        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
- .mdebug.abi32  0xa0000094        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
+ .mdebug.abi32  0xa000a118        0x0 Objects\C32\main.o
+ .mdebug.abi32  0xa000a118        0x0 Objects\C32\usb_config.o
+ .mdebug.abi32  0xa000a118        0x0 Objects\C32\LCDBlocking.o
+ .mdebug.abi32  0xa000a118        0x0 Objects\C32\uart2.o
+ .mdebug.abi32  0xa000a118        0x0 Objects\C32\usb_host_generic.o
+ .mdebug.abi32  0xa000a118        0x0 Objects\C32\usb_host.o
+ .mdebug.abi32  0xa000a118        0x0 Objects\C32\Delay.o
+ .mdebug.abi32  0xa000a118        0x0 Objects\C32\tjpgd.o
+ .mdebug.abi32  0xa000a118        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
+ .mdebug.abi32  0xa000a118        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
+ .mdebug.abi32  0xa000a118        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
+ .mdebug.abi32  0xa000a118        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
+ .mdebug.abi32  0xa000a118        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
+ .mdebug.abi32  0xa000a118        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+ .mdebug.abi32  0xa000a118        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .mdebug.abi32  0xa000a118        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .mdebug.abi32  0xa000a118        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
+ .mdebug.abi32  0xa000a118        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
+ .mdebug.abi32  0xa000a118        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
+ .mdebug.abi32  0xa000a118        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .mdebug.abi32  0xa000a118        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
 
 .mdebug.abiN32
  *(.mdebug.abiN32)
@@ -792,6 +815,7 @@ END GROUP
  .comment       0x00000000       0x3d Objects\C32\usb_host_generic.o
  .comment       0x00000000       0x3d Objects\C32\usb_host.o
  .comment       0x00000000       0x3d Objects\C32\Delay.o
+ .comment       0x00000000       0x3d Objects\C32\tjpgd.o
  .comment       0x0000003c       0x51 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
                                  0x52 (size before relaxing)
  .comment       0x00000000       0x52 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
@@ -822,7 +846,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x278
+.debug_aranges  0x00000000      0x298
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x20 Objects\C32\main.o
@@ -837,184 +861,193 @@ END GROUP
  .debug_aranges
                 0x000000a0       0x20 Objects\C32\Delay.o
  .debug_aranges
-                0x000000c0       0x28 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
+                0x000000c0       0x20 Objects\C32\tjpgd.o
  .debug_aranges
-                0x000000e8       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
+                0x000000e0       0x28 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
  .debug_aranges
-                0x00000108       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
+                0x00000108       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
  .debug_aranges
-                0x00000128       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
+                0x00000128       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
  .debug_aranges
-                0x00000148       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
+                0x00000148       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
  .debug_aranges
-                0x00000168       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+                0x00000168       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
  .debug_aranges
-                0x00000188       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+                0x00000188       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
  .debug_aranges
-                0x000001a8       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+                0x000001a8       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
  .debug_aranges
-                0x000001c8       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
+                0x000001c8       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
  .debug_aranges
-                0x000001e8       0x30 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
+                0x000001e8       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
  .debug_aranges
-                0x00000218       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
+                0x00000208       0x30 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
  .debug_aranges
-                0x00000238       0x40 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+                0x00000238       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
+ .debug_aranges
+                0x00000258       0x40 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
 
 .debug_pubnames
-                0x00000000      0x95e
+                0x00000000      0xa4c
  *(.debug_pubnames)
  .debug_pubnames
-                0x00000000       0xa9 Objects\C32\main.o
+                0x00000000       0xfc Objects\C32\main.o
  .debug_pubnames
-                0x000000a9       0x33 Objects\C32\usb_config.o
+                0x000000fc       0x33 Objects\C32\usb_config.o
  .debug_pubnames
-                0x000000dc       0x56 Objects\C32\LCDBlocking.o
+                0x0000012f       0x56 Objects\C32\LCDBlocking.o
  .debug_pubnames
-                0x00000132      0x112 Objects\C32\uart2.o
+                0x00000185      0x112 Objects\C32\uart2.o
  .debug_pubnames
-                0x00000244       0xa9 Objects\C32\usb_host_generic.o
+                0x00000297       0xa9 Objects\C32\usb_host_generic.o
  .debug_pubnames
-                0x000002ed      0x401 Objects\C32\usb_host.o
+                0x00000340      0x46d Objects\C32\usb_host.o
  .debug_pubnames
-                0x000006ee       0x2c Objects\C32\Delay.o
+                0x000007ad       0x2c Objects\C32\Delay.o
  .debug_pubnames
-                0x0000071a       0x3b c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
+                0x000007d9       0x2f Objects\C32\tjpgd.o
  .debug_pubnames
-                0x00000755       0x2b c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
+                0x00000808       0x3b c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
  .debug_pubnames
-                0x00000780       0x2b c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
+                0x00000843       0x2b c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
  .debug_pubnames
-                0x000007ab       0x36 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
+                0x0000086e       0x2b c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
  .debug_pubnames
-                0x000007e1       0x2a c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
+                0x00000899       0x36 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
  .debug_pubnames
-                0x0000080b       0x33 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+                0x000008cf       0x2a c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
  .debug_pubnames
-                0x0000083e       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+                0x000008f9       0x33 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
  .debug_pubnames
-                0x0000085e       0x24 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+                0x0000092c       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
  .debug_pubnames
-                0x00000882       0x31 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
+                0x0000094c       0x24 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
  .debug_pubnames
-                0x000008b3       0x32 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
+                0x00000970       0x31 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
  .debug_pubnames
-                0x000008e5       0x1d c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
+                0x000009a1       0x32 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
  .debug_pubnames
-                0x00000902       0x5c c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+                0x000009d3       0x1d c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
+ .debug_pubnames
+                0x000009f0       0x5c c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
 
-.debug_info     0x00000000     0xefc6
+.debug_info     0x00000000    0x10874
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000     0x1baf Objects\C32\main.o
- .debug_info    0x00001baf     0x17bb Objects\C32\usb_config.o
- .debug_info    0x0000336a     0x1baa Objects\C32\LCDBlocking.o
- .debug_info    0x00004f14     0x1f90 Objects\C32\uart2.o
- .debug_info    0x00006ea4     0x19e7 Objects\C32\usb_host_generic.o
- .debug_info    0x0000888b     0x4b67 Objects\C32\usb_host.o
- .debug_info    0x0000d3f2     0x11ff Objects\C32\Delay.o
- .debug_info    0x0000e5f1       0xd4 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
- .debug_info    0x0000e6c5       0xcb c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
- .debug_info    0x0000e790       0xcb c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
- .debug_info    0x0000e85b       0xd1 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
- .debug_info    0x0000e92c       0xc9 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
- .debug_info    0x0000e9f5       0xdf c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
- .debug_info    0x0000ead4       0xb9 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
- .debug_info    0x0000eb8d       0xc1 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
- .debug_info    0x0000ec4e       0xdb c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
- .debug_info    0x0000ed29       0xdd c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
- .debug_info    0x0000ee06       0xae c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
- .debug_info    0x0000eeb4      0x112 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
- .debug_info    0x0000efc6        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
+ .debug_info    0x00000000     0x2390 Objects\C32\main.o
+ .debug_info    0x00002390     0x17c1 Objects\C32\usb_config.o
+ .debug_info    0x00003b51     0x1bb0 Objects\C32\LCDBlocking.o
+ .debug_info    0x00005701     0x1f96 Objects\C32\uart2.o
+ .debug_info    0x00007697     0x19ed Objects\C32\usb_host_generic.o
+ .debug_info    0x00009084     0x4d32 Objects\C32\usb_host.o
+ .debug_info    0x0000ddb6     0x1205 Objects\C32\Delay.o
+ .debug_info    0x0000efbb      0xee4 Objects\C32\tjpgd.o
+ .debug_info    0x0000fe9f       0xd4 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
+ .debug_info    0x0000ff73       0xcb c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
+ .debug_info    0x0001003e       0xcb c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
+ .debug_info    0x00010109       0xd1 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
+ .debug_info    0x000101da       0xc9 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
+ .debug_info    0x000102a3       0xdf c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_info    0x00010382       0xb9 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_info    0x0001043b       0xc1 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_info    0x000104fc       0xdb c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
+ .debug_info    0x000105d7       0xdd c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
+ .debug_info    0x000106b4       0xae c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
+ .debug_info    0x00010762      0x112 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .debug_info    0x00010874        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
 
-.debug_abbrev   0x00000000     0x12f7
+.debug_abbrev   0x00000000     0x14dd
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x347 Objects\C32\main.o
- .debug_abbrev  0x00000347      0x205 Objects\C32\usb_config.o
- .debug_abbrev  0x0000054c      0x214 Objects\C32\LCDBlocking.o
- .debug_abbrev  0x00000760      0x275 Objects\C32\uart2.o
- .debug_abbrev  0x000009d5      0x272 Objects\C32\usb_host_generic.o
- .debug_abbrev  0x00000c47      0x329 Objects\C32\usb_host.o
- .debug_abbrev  0x00000f70      0x19b Objects\C32\Delay.o
- .debug_abbrev  0x0000110b       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
- .debug_abbrev  0x00001130       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
- .debug_abbrev  0x00001155       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
- .debug_abbrev  0x0000117a       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
- .debug_abbrev  0x0000119f       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
- .debug_abbrev  0x000011c4       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
- .debug_abbrev  0x000011e9       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
- .debug_abbrev  0x0000120e       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
- .debug_abbrev  0x00001233       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
- .debug_abbrev  0x00001258       0x41 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
- .debug_abbrev  0x00001299       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
- .debug_abbrev  0x000012be       0x38 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
- .debug_abbrev  0x000012f6        0x1 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
+ .debug_abbrev  0x00000000      0x3b2 Objects\C32\main.o
+ .debug_abbrev  0x000003b2      0x205 Objects\C32\usb_config.o
+ .debug_abbrev  0x000005b7      0x214 Objects\C32\LCDBlocking.o
+ .debug_abbrev  0x000007cb      0x275 Objects\C32\uart2.o
+ .debug_abbrev  0x00000a40      0x272 Objects\C32\usb_host_generic.o
+ .debug_abbrev  0x00000cb2      0x329 Objects\C32\usb_host.o
+ .debug_abbrev  0x00000fdb      0x19b Objects\C32\Delay.o
+ .debug_abbrev  0x00001176      0x17b Objects\C32\tjpgd.o
+ .debug_abbrev  0x000012f1       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
+ .debug_abbrev  0x00001316       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
+ .debug_abbrev  0x0000133b       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
+ .debug_abbrev  0x00001360       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
+ .debug_abbrev  0x00001385       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
+ .debug_abbrev  0x000013aa       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_abbrev  0x000013cf       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_abbrev  0x000013f4       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_abbrev  0x00001419       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
+ .debug_abbrev  0x0000143e       0x41 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
+ .debug_abbrev  0x0000147f       0x25 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
+ .debug_abbrev  0x000014a4       0x38 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .debug_abbrev  0x000014dc        0x1 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
 
-.debug_line     0x00000000     0x1fe4
+.debug_line     0x00000000     0x2676
  *(.debug_line)
- .debug_line    0x00000000      0x2be Objects\C32\main.o
- .debug_line    0x000002be      0x191 Objects\C32\usb_config.o
- .debug_line    0x0000044f      0x251 Objects\C32\LCDBlocking.o
- .debug_line    0x000006a0      0x241 Objects\C32\uart2.o
- .debug_line    0x000008e1      0x26f Objects\C32\usb_host_generic.o
- .debug_line    0x00000b50      0xd66 Objects\C32\usb_host.o
- .debug_line    0x000018b6      0x173 Objects\C32\Delay.o
- .debug_line    0x00001a29       0x62 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
- .debug_line    0x00001a8b       0x73 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
- .debug_line    0x00001afe       0x73 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
- .debug_line    0x00001b71       0x6e c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
- .debug_line    0x00001bdf       0x72 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
- .debug_line    0x00001c51       0x94 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
- .debug_line    0x00001ce5       0x81 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
- .debug_line    0x00001d66       0x85 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
- .debug_line    0x00001deb       0x92 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
- .debug_line    0x00001e7d       0x79 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
- .debug_line    0x00001ef6       0x79 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
- .debug_line    0x00001f6f       0x75 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
- .debug_line    0x00001fe4        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
+ .debug_line    0x00000000      0x43f Objects\C32\main.o
+ .debug_line    0x0000043f      0x191 Objects\C32\usb_config.o
+ .debug_line    0x000005d0      0x251 Objects\C32\LCDBlocking.o
+ .debug_line    0x00000821      0x241 Objects\C32\uart2.o
+ .debug_line    0x00000a62      0x279 Objects\C32\usb_host_generic.o
+ .debug_line    0x00000cdb      0xe67 Objects\C32\usb_host.o
+ .debug_line    0x00001b42      0x173 Objects\C32\Delay.o
+ .debug_line    0x00001cb5      0x406 Objects\C32\tjpgd.o
+ .debug_line    0x000020bb       0x62 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
+ .debug_line    0x0000211d       0x73 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
+ .debug_line    0x00002190       0x73 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
+ .debug_line    0x00002203       0x6e c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
+ .debug_line    0x00002271       0x72 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
+ .debug_line    0x000022e3       0x94 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_line    0x00002377       0x81 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_line    0x000023f8       0x85 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_line    0x0000247d       0x92 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
+ .debug_line    0x0000250f       0x79 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
+ .debug_line    0x00002588       0x79 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
+ .debug_line    0x00002601       0x75 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .debug_line    0x00002676        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
 
-.debug_frame    0x00000000      0xa34
+.debug_frame    0x00000000      0xc0c
  *(.debug_frame)
- .debug_frame   0x00000000       0x9c Objects\C32\main.o
- .debug_frame   0x0000009c       0x9c Objects\C32\LCDBlocking.o
- .debug_frame   0x00000138      0x17c Objects\C32\uart2.o
- .debug_frame   0x000002b4       0x9c Objects\C32\usb_host_generic.o
- .debug_frame   0x00000350      0x44c Objects\C32\usb_host.o
- .debug_frame   0x0000079c       0x48 Objects\C32\Delay.o
- .debug_frame   0x000007e4       0x30 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
- .debug_frame   0x00000814       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
- .debug_frame   0x00000834       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
- .debug_frame   0x00000854       0x28 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
- .debug_frame   0x0000087c       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
- .debug_frame   0x0000089c       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
- .debug_frame   0x000008bc       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
- .debug_frame   0x000008dc       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
- .debug_frame   0x000008fc       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
- .debug_frame   0x0000091c       0x6c c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
- .debug_frame   0x00000988       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
- .debug_frame   0x000009a8       0x8c c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .debug_frame   0x00000000       0xd4 Objects\C32\main.o
+ .debug_frame   0x000000d4       0x9c Objects\C32\LCDBlocking.o
+ .debug_frame   0x00000170      0x17c Objects\C32\uart2.o
+ .debug_frame   0x000002ec       0x9c Objects\C32\usb_host_generic.o
+ .debug_frame   0x00000388      0x4a4 Objects\C32\usb_host.o
+ .debug_frame   0x0000082c       0x48 Objects\C32\Delay.o
+ .debug_frame   0x00000874      0x148 Objects\C32\tjpgd.o
+ .debug_frame   0x000009bc       0x30 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
+ .debug_frame   0x000009ec       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
+ .debug_frame   0x00000a0c       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
+ .debug_frame   0x00000a2c       0x28 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
+ .debug_frame   0x00000a54       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
+ .debug_frame   0x00000a74       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_frame   0x00000a94       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_frame   0x00000ab4       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_frame   0x00000ad4       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
+ .debug_frame   0x00000af4       0x6c c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
+ .debug_frame   0x00000b60       0x20 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
+ .debug_frame   0x00000b80       0x8c c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
 
-.debug_str      0x00000000      0xbc3
+.debug_str      0x00000000      0xc0c
  *(.debug_str)
- .debug_str     0x00000000      0x187 Objects\C32\main.o
- .debug_str     0x00000187      0x12f Objects\C32\usb_config.o
- .debug_str     0x000002b6      0x168 Objects\C32\LCDBlocking.o
- .debug_str     0x0000041e      0x16d Objects\C32\uart2.o
- .debug_str     0x0000058b      0x173 Objects\C32\usb_host_generic.o
- .debug_str     0x000006fe      0x396 Objects\C32\usb_host.o
- .debug_str     0x00000a94      0x12f Objects\C32\Delay.o
- .debug_str     0x00000bc3        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
- .debug_str     0x00000bc3        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
- .debug_str     0x00000bc3        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
- .debug_str     0x00000bc3        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
- .debug_str     0x00000bc3        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
- .debug_str     0x00000bc3        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
- .debug_str     0x00000bc3        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
- .debug_str     0x00000bc3        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
- .debug_str     0x00000bc3        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
- .debug_str     0x00000bc3        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
- .debug_str     0x00000bc3        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
- .debug_str     0x00000bc3        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
- .debug_str     0x00000bc3        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
+ .debug_str     0x00000000      0x1af Objects\C32\main.o
+ .debug_str     0x000001af      0x12f Objects\C32\usb_config.o
+ .debug_str     0x000002de      0x168 Objects\C32\LCDBlocking.o
+ .debug_str     0x00000446      0x16d Objects\C32\uart2.o
+ .debug_str     0x000005b3      0x173 Objects\C32\usb_host_generic.o
+ .debug_str     0x00000726      0x3af Objects\C32\usb_host.o
+ .debug_str     0x00000ad5      0x12f Objects\C32\Delay.o
+ .debug_str     0x00000c04        0x8 Objects\C32\tjpgd.o
+ .debug_str     0x00000c0c        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
+ .debug_str     0x00000c0c        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
+ .debug_str     0x00000c0c        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
+ .debug_str     0x00000c0c        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
+ .debug_str     0x00000c0c        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
+ .debug_str     0x00000c0c        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_str     0x00000c0c        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_str     0x00000c0c        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_str     0x00000c0c        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
+ .debug_str     0x00000c0c        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
+ .debug_str     0x00000c0c        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
+ .debug_str     0x00000c0c        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .debug_str     0x00000c0c        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
 
 .debug_loc
  *(.debug_loc)
@@ -1035,22 +1068,24 @@ END GROUP
  *(.debug_varnames)
 
 .debug_pubtypes
-                0x00000000      0xe29
+                0x00000000      0xf3c
  *(.debug_pubtypes)
  .debug_pubtypes
-                0x00000000      0x1af Objects\C32\main.o
+                0x00000000      0x248 Objects\C32\main.o
  .debug_pubtypes
-                0x000001af      0x19f Objects\C32\usb_config.o
+                0x00000248      0x19f Objects\C32\usb_config.o
  .debug_pubtypes
-                0x0000034e      0x162 Objects\C32\LCDBlocking.o
+                0x000003e7      0x162 Objects\C32\LCDBlocking.o
  .debug_pubtypes
-                0x000004b0      0x11d Objects\C32\uart2.o
+                0x00000549      0x11d Objects\C32\uart2.o
  .debug_pubtypes
-                0x000005cd      0x1bf Objects\C32\usb_host_generic.o
+                0x00000666      0x1bf Objects\C32\usb_host_generic.o
  .debug_pubtypes
-                0x0000078c      0x5a3 Objects\C32\usb_host.o
+                0x00000825      0x5a3 Objects\C32\usb_host.o
  .debug_pubtypes
-                0x00000d2f       0xfa Objects\C32\Delay.o
+                0x00000dc8       0xfa Objects\C32\Delay.o
+ .debug_pubtypes
+                0x00000ec2       0x7a Objects\C32\tjpgd.o
 
 .debug_ranges   0x00000000      0x140
  *(.debug_ranges)
@@ -1086,31 +1121,33 @@ END GROUP
  .gnu.attributes
                 0x00000060       0x10 Objects\C32\Delay.o
  .gnu.attributes
-                0x00000070       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
+                0x00000070       0x10 Objects\C32\tjpgd.o
  .gnu.attributes
-                0x00000080       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
+                0x00000080       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
  .gnu.attributes
-                0x00000090       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
+                0x00000090       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
  .gnu.attributes
-                0x000000a0       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
+                0x000000a0       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
  .gnu.attributes
-                0x000000b0       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
+                0x000000b0       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
  .gnu.attributes
-                0x000000c0       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+                0x000000c0       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
  .gnu.attributes
-                0x000000d0       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+                0x000000d0       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
  .gnu.attributes
-                0x000000e0       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+                0x000000e0       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
  .gnu.attributes
-                0x000000f0       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
+                0x000000f0       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
  .gnu.attributes
-                0x00000100       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
+                0x00000100       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
  .gnu.attributes
-                0x00000110       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
+                0x00000110       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
  .gnu.attributes
-                0x00000120       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+                0x00000120       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
  .gnu.attributes
-                0x00000130       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
+                0x00000130       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+ .gnu.attributes
+                0x00000140       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
 LOAD c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1\libgcc.a
 START GROUP
 LOAD c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a
@@ -1131,22 +1168,22 @@ LOAD data_init
 .reginfo        0x9d000000       0x18
  .reginfo       0x9d000000       0x18 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib/crt0.o
 
-.stack          0xa0002420      0x400
- .stack         0xa0002420      0x400 stack
+.stack          0xa000c3c0      0x400
+ .stack         0xa000c3c0      0x400 stack
 
-.bss            0xa0000200      0x200
- .bss           0xa0000200      0x200 Objects\C32\usb_host.o
+.bss            0xa000a200      0x200
+ .bss           0xa000a200      0x200 Objects\C32\usb_host.o
 
-.bss            0xa0000094       0x1c
- .bss           0xa0000094       0x1c c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+.bss            0xa000a118       0x1c
+ .bss           0xa000a118       0x1c c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
 
-.data           0xa00000b0       0x10
- .data          0xa00000b0       0x10 Objects\C32\usb_config.o
-                0xa00000b0                usbClientDrvTable
+.data           0xa000a134       0x10
+ .data          0xa000a134       0x10 Objects\C32\usb_config.o
+                0xa000a134                usbClientDrvTable
 
-.bss            0xa00000c0       0x10
- .bss           0xa00000c0       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
-                0xa00000c0                __allocs
+.bss            0xa000a144       0x10
+ .bss           0xa000a144       0x10 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
+                0xa000a144                __allocs
 
 .bss%z1         0x00000000        0x0
  .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
@@ -1167,376 +1204,432 @@ LOAD data_init
  .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
 
 .bss%z7         0x00000000        0x0
- .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libm.a(fp32.o)
 
 .data%z8        0x00000000        0x0
- .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libm.a(fp32.o)
 
 .bss%z9         0x00000000        0x0
- .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(general-exception.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
 
 .data%z10       0x00000000        0x0
- .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(general-exception.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
 
 .bss%z11        0x00000000        0x0
- .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(general-exception.o)
 
 .data%z12       0x00000000        0x0
- .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(general-exception.o)
 
 .bss%z13        0x00000000        0x0
- .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
 
 .data%z14       0x00000000        0x0
- .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
 
 .bss%z15        0x00000000        0x0
- .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
 
 .data%z16       0x00000000        0x0
- .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
 
 .bss%z17        0x00000000        0x0
- .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
 
 .data%z18       0x00000000        0x0
- .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
 
 .bss%z19        0x00000000        0x0
- .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(memset.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
 
 .data%z20       0x00000000        0x0
- .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(memset.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
 
 .bss%z21        0x00000000        0x0
- .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(memset.o)
 
 .data%z22       0x00000000        0x0
- .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(memset.o)
 
 .bss%z23        0x00000000        0x0
- .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
 
 .data%z24       0x00000000        0x0
- .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
 
 .bss%z25        0x00000000        0x0
- .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
 
 .data%z26       0x00000000        0x0
- .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
 
 .bss%z27        0x00000000        0x0
- .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
 
 .data%z28       0x00000000        0x0
- .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
 
 .bss%z29        0x00000000        0x0
- .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
 
 .data%z30       0x00000000        0x0
- .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
 
 .bss%z31        0x00000000        0x0
- .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib/./proc/32MX795F512H\processor.o
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
 
 .data%z32       0x00000000        0x0
- .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib/./proc/32MX795F512H\processor.o
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
 
 .bss%z33        0x00000000        0x0
- .bss           0x00000000        0x0 Objects\C32\Delay.o
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib/./proc/32MX795F512H\processor.o
 
 .data%z34       0x00000000        0x0
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib/./proc/32MX795F512H\processor.o
+
+.bss%z35        0x00000000        0x0
+ .bss           0x00000000        0x0 Objects\C32\tjpgd.o
+
+.data%z36       0x00000000        0x0
+ .data          0x00000000        0x0 Objects\C32\tjpgd.o
+
+.bss%z37        0x00000000        0x0
+ .bss           0x00000000        0x0 Objects\C32\Delay.o
+
+.data%z38       0x00000000        0x0
  .data          0x00000000        0x0 Objects\C32\Delay.o
 
-.data%z35       0x00000000        0x0
+.data%z39       0x00000000        0x0
  .data          0x00000000        0x0 Objects\C32\usb_host.o
 
-.bss%z36        0x00000000        0x0
+.bss%z40        0x00000000        0x0
  .bss           0x00000000        0x0 Objects\C32\usb_host_generic.o
 
-.data%z37       0x00000000        0x0
+.data%z41       0x00000000        0x0
  .data          0x00000000        0x0 Objects\C32\usb_host_generic.o
 
-.bss%z38        0x00000000        0x0
+.bss%z42        0x00000000        0x0
  .bss           0x00000000        0x0 Objects\C32\uart2.o
 
-.data%z39       0x00000000        0x0
+.data%z43       0x00000000        0x0
  .data          0x00000000        0x0 Objects\C32\uart2.o
 
-.bss%z40        0x00000000        0x0
+.bss%z44        0x00000000        0x0
  .bss           0x00000000        0x0 Objects\C32\LCDBlocking.o
 
-.data%z41       0x00000000        0x0
+.data%z45       0x00000000        0x0
  .data          0x00000000        0x0 Objects\C32\LCDBlocking.o
 
-.bss%z42        0x00000000        0x0
+.bss%z46        0x00000000        0x0
  .bss           0x00000000        0x0 Objects\C32\usb_config.o
 
-.bss%z43        0x00000000        0x0
+.bss%z47        0x00000000        0x0
  .bss           0x00000000        0x0 Objects\C32\main.o
 
-.data%z44       0x00000000        0x0
+.data%z48       0x00000000        0x0
  .data          0x00000000        0x0 Objects\C32\main.o
 
-.bss%z45        0x00000000        0x0
+.bss%z49        0x00000000        0x0
  .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib/crt0.o
 
-.data%z46       0x00000000        0x0
+.data%z50       0x00000000        0x0
  .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib/crt0.o
 
-.text           0x9d000020     0x9a48
- .text          0x9d000020     0x79ac Objects\C32\usb_host.o
+.text           0x9d000020     0xf46c
+ .text          0x9d000020     0x8780 Objects\C32\usb_host.o
                 0x9d000020                USBHostClearEndpointErrors
                 0x9d0000cc                USBHostDeviceSpecificClientDriver
                 0x9d000108                USBHostDeviceStatus
                 0x9d0001c8                USBHostInit
-                0x9d0002d4                USBHostIssueDeviceRequest
-                0x9d000664                USBHostRead
-                0x9d0007dc                USBHostResetDevice
-                0x9d000850                USBHostResumeDevice
-                0x9d0008d4                USBHostSetDeviceConfiguration
-                0x9d0009a0                USBHostSetNAKTimeout
-                0x9d000a74                USBHostShutdown
-                0x9d000b18                USBHostSuspendDevice
-                0x9d000ba0                USBHostTasks
-                0x9d002cdc                USBHostTerminateTransfer
-                0x9d002d80                USBHostTransferIsComplete
-                0x9d002ee0                USBHostVbusEvent
-                0x9d002f98                USBHostWrite
-                0x9d003110                _USB_CheckCommandAndEnumerationAttempts
-                0x9d0031d0                _USB_FindClassDriver
-                0x9d003378                _USB_FindDeviceLevelClientDriver
-                0x9d0036d0                _USB_FindEndpoint
-                0x9d0037ac                _USB_FindNextToken
-                0x9d005104                _USB_FindServiceEndpoint
-                0x9d0053d0                _USB_FreeConfigMemory
-                0x9d005570                _USB_FreeMemory
-                0x9d005670                _USB_InitControlRead
-                0x9d005768                _USB_InitControlWrite
-                0x9d005880                _USB_InitRead
-                0x9d0059a0                _USB_InitWrite
-                0x9d005ac0                _USB_NotifyClients
-                0x9d005be4                _USB_NotifyDataClients
-                0x9d005c8c                _USB_ParseConfigurationDescriptor
-                0x9d0065cc                _USB_ResetDATA0
-                0x9d0066d8                _USB_SendToken
-                0x9d0067e0                _USB_SetBDT
-                0x9d006b7c                _USB_TransferInProgress
-                0x9d006c70                _USB1Interrupt
- .text          0x9d0079cc      0x914 Objects\C32\main.o
-                0x9d0079cc                InitializeSystem
-                0x9d007c64                CheckForNewAttach
-                0x9d007d08                ManageDemoState
-                0x9d008000                USB_ApplicationEventHandler
-                0x9d00823c                main
- .text          0x9d0082e0      0x8b4 Objects\C32\LCDBlocking.o
-                0x9d0085f8                LCDInit
-                0x9d008860                LCDUpdate
-                0x9d008a34                LCDErase
-                0x9d008a90                LCDWriteLine
- .text          0x9d008b94      0x8b0 Objects\C32\uart2.o
-                0x9d008b94                UART2GetBaudError
-                0x9d008bc4                UART2GetChar
-                0x9d008c1c                UART2Init
-                0x9d008cb8                UART2IsPressed
-                0x9d008cfc                UART2PrintString
-                0x9d008d6c                UART2PutChar
-                0x9d008db8                UART2PutDec
-                0x9d008f48                UART2PutHex
-                0x9d008fe0                UART2PutHexWord
-                0x9d0090d8                UART2PutHexDWord
-                0x9d00929c                UART2Char2Hex
-                0x9d009394                UART2Hex2Char
-                0x9d009400                UART2ClrError
- .text          0x9d009444      0x624 Objects\C32\usb_host_generic.o
-                0x9d009444                USBHostGenericInit
-                0x9d0095cc                USBHostGenericEventHandler
-                0x9d0097ac                USBHostGenericGetDeviceAddress
-                0x9d00986c                USBHostGenericRead
-                0x9d009970                USBHostGenericWrite
+                0x9d0002d4                USBHostIsochronousBuffersCreate
+                0x9d000454                USBHostIsochronousBuffersDestroy
+                0x9d00053c                USBHostIsochronousBuffersReset
+                0x9d0005f0                USBHostIssueDeviceRequest
+                0x9d0009f4                USBHostRead
+                0x9d000b6c                USBHostResetDevice
+                0x9d000be0                USBHostResumeDevice
+                0x9d000c64                USBHostSetDeviceConfiguration
+                0x9d000d30                USBHostSetNAKTimeout
+                0x9d000e04                USBHostShutdown
+                0x9d000ea8                USBHostSuspendDevice
+                0x9d000f30                USBHostTasks
+                0x9d00306c                USBHostTerminateTransfer
+                0x9d003110                USBHostTransferIsComplete
+                0x9d003270                USBHostVbusEvent
+                0x9d003328                USBHostWrite
+                0x9d0034a0                _USB_CheckCommandAndEnumerationAttempts
+                0x9d003560                _USB_FindClassDriver
+                0x9d003708                _USB_FindDeviceLevelClientDriver
+                0x9d003a60                _USB_FindEndpoint
+                0x9d003b3c                _USB_FindNextToken
+                0x9d005eb0                _USB_FindServiceEndpoint
+                0x9d0061a4                _USB_FreeConfigMemory
+                0x9d006344                _USB_FreeMemory
+                0x9d006444                _USB_InitControlRead
+                0x9d00653c                _USB_InitControlWrite
+                0x9d006654                _USB_InitRead
+                0x9d006774                _USB_InitWrite
+                0x9d006894                _USB_NotifyClients
+                0x9d0069b8                _USB_NotifyDataClients
+                0x9d006a60                _USB_ParseConfigurationDescriptor
+                0x9d0073a0                _USB_ResetDATA0
+                0x9d0074ac                _USB_SendToken
+                0x9d0075b4                _USB_SetBDT
+                0x9d007950                _USB_TransferInProgress
+                0x9d007a44                _USB1Interrupt
+ .text          0x9d0087a0     0x30b4 Objects\C32\tjpgd.o
+                0x9d00ab50                jd_prepare
+                0x9d00b654                jd_decomp
+ .text          0x9d00b854     0x1b8c Objects\C32\main.o
+                0x9d00b854                InitializeSystem
+                0x9d00bb34                CheckForNewAttach
+                0x9d00bc44                control
+                0x9d00bd58                packet_dump
+                0x9d00be00                ManageDemoState
+                0x9d00cc80                USB_ApplicationEventHandler
+                0x9d00d33c                main
+ .text          0x9d00d3e0      0x8ec c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libm.a(fp32.o)
+                0x9d00d3e0                __subsf3
+                0x9d00d3e0                fpsub
+                0x9d00d3e8                fpadd
+                0x9d00d3e8                __addsf3
+                0x9d00d654                fpmul
+                0x9d00d654                __mulsf3
+                0x9d00d80c                fpdiv
+                0x9d00d80c                __divsf3
+                0x9d00da38                litofp
+                0x9d00da38                sitofp
+                0x9d00da38                __floatsisf
+                0x9d00da94                uitofp
+                0x9d00da94                ultofp
+                0x9d00dae0                fptosi
+                0x9d00dae0                fptoli
+                0x9d00dae0                __fixsfsi
+                0x9d00db58                __fixunssfsi
+                0x9d00db58                fptoul
+                0x9d00db58                fptoui
+                0x9d00dbcc                __eqsf2
+                0x9d00dbcc                __nesf2
+                0x9d00dbcc                __lesf2
+                0x9d00dbcc                __ltsf2
+                0x9d00dbcc                fpcmp
+                0x9d00dbcc                __gtsf2
+                0x9d00dbcc                __gesf2
+                0x9d00dc60                fpfabs
+                0x9d00dc60                fabsf
+                0x9d00dc70                __negsf2
+                0x9d00dc80                fpnan
+                0x9d00dc80                nanf
+ .text          0x9d00dccc      0x8b4 Objects\C32\LCDBlocking.o
+                0x9d00dfe4                LCDInit
+                0x9d00e24c                LCDUpdate
+                0x9d00e420                LCDErase
+                0x9d00e47c                LCDWriteLine
+ .text          0x9d00e580      0x8b0 Objects\C32\uart2.o
+                0x9d00e580                UART2GetBaudError
+                0x9d00e5b0                UART2GetChar
+                0x9d00e608                UART2Init
+                0x9d00e6a4                UART2IsPressed
+                0x9d00e6e8                UART2PrintString
+                0x9d00e758                UART2PutChar
+                0x9d00e7a4                UART2PutDec
+                0x9d00e934                UART2PutHex
+                0x9d00e9cc                UART2PutHexWord
+                0x9d00eac4                UART2PutHexDWord
+                0x9d00ec88                UART2Char2Hex
+                0x9d00ed80                UART2Hex2Char
+                0x9d00edec                UART2ClrError
+ .text          0x9d00ee30      0x65c Objects\C32\usb_host_generic.o
+                0x9d00ee30                USBHostGenericInit
+                0x9d00efb8                USBHostGenericEventHandler
+                0x9d00f1d0                USBHostGenericGetDeviceAddress
+                0x9d00f290                USBHostGenericRead
+                0x9d00f394                USBHostGenericWrite
 
-.rodata         0x9d009a68      0x2a4
- .rodata        0x9d009a68      0x2a4 Objects\C32\main.o
+.rodata         0x9d00f48c      0xa74
+ .rodata        0x9d00f48c      0x5a4 Objects\C32\main.o
+ .rodata        0x9d00fa30      0x4d0 Objects\C32\tjpgd.o
 
-.text.malloc    0x9d009d0c      0x288
- .text.malloc   0x9d009d0c      0x288 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
-                0x9d009d0c                malloc
+.text.malloc    0x9d00ff00      0x288
+ .text.malloc   0x9d00ff00      0x288 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
+                0x9d00ff00                malloc
 
 .text._sbrk_init
-                0x9d009f94      0x194
+                0x9d010188      0x194
  .text._sbrk_init
-                0x9d009f94      0x194 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
-                0x9d009f94                _sbrk_init
+                0x9d010188      0x194 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+                0x9d010188                _sbrk_init
 
-.text.realloc   0x9d00a128      0x17c
- .text.realloc  0x9d00a128      0x17c c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
-                0x9d00a128                realloc
+.text.realloc   0x9d01031c      0x17c
+ .text.realloc  0x9d01031c      0x17c c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
+                0x9d01031c                realloc
 
-.text           0x9d00a2a4       0xf0
- .text          0x9d00a2a4       0xf0 Objects\C32\Delay.o
-                0x9d00a2a4                DelayMs
-                0x9d00a338                Delay10us
+.text           0x9d010498       0xf0
+ .text          0x9d010498       0xf0 Objects\C32\Delay.o
+                0x9d010498                DelayMs
+                0x9d01052c                Delay10us
 
 .text.general_exception
-                0x9d00a394       0xd0
+                0x9d010588       0xd0
  .text.general_exception
-                0x9d00a394       0xd0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(general-exception.o)
-                0x9d00a394                _general_exception_context
+                0x9d010588       0xd0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(general-exception.o)
+                0x9d010588                _general_exception_context
 
-.text._sbrk     0x9d00a464       0xc4
- .text._sbrk    0x9d00a464       0xc4 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
-                0x9d00a464                _sbrk
+.dinit          0x9d010658       0xc8
+ .dinit         0x9d010658       0xc8 data_init
 
-.text           0x9d00a528       0xa8
- .text          0x9d00a528       0xa8 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(memset.o)
-                0x9d00a528                memset
+.text._sbrk     0x9d010720       0xc4
+ .text._sbrk    0x9d010720       0xc4 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+                0x9d010720                _sbrk
 
-.dinit          0x9d00a5d0       0xa0
- .dinit         0x9d00a5d0       0xa0 data_init
+.text           0x9d0107e4       0xa8
+ .text          0x9d0107e4       0xa8 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(memset.o)
+                0x9d0107e4                memset
 
-.text.sbrk      0x9d00a670       0x50
- .text.sbrk     0x9d00a670       0x50 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
-                0x9d00a670                sbrk
+.rodata         0x9d01088c       0x70
+ .rodata        0x9d01088c       0x70 Objects\C32\usb_host.o
 
-.text           0x9d00a6c0       0x38
- .text          0x9d00a6c0       0x38 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib/crt0.o
-                0x9d00a6ec                __crt0_exit
+.text.sbrk      0x9d0108fc       0x50
+ .text.sbrk     0x9d0108fc       0x50 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+                0x9d0108fc                sbrk
+
+.text           0x9d01094c       0x38
+ .text          0x9d01094c       0x38 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib/crt0.o
+                0x9d010978                __crt0_exit
 
 .text.INTEnableSystemMultiVectoredInt
-                0x9d00a6f8       0x34
+                0x9d010984       0x34
  .text.INTEnableSystemMultiVectoredInt
-                0x9d00a6f8       0x34 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
-                0x9d00a6f8                INTEnableSystemMultiVectoredInt
+                0x9d010984       0x34 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
+                0x9d010984                INTEnableSystemMultiVectoredInt
 
-.text.memcpy    0x9d00a72c       0x2c
- .text.memcpy   0x9d00a72c       0x2c c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
-                0x9d00a72c                memcpy
+.text.memcpy    0x9d0109b8       0x2c
+ .text.memcpy   0x9d0109b8       0x2c c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
+                0x9d0109b8                memcpy
 
 .text._stub_sbd_memlayout
-                0x9d00a758       0x2c
+                0x9d0109e4       0x2c
  .text._stub_sbd_memlayout
-                0x9d00a758       0x2c c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
-                0x9d00a758                _stub_sbd_memlayout
-                0x9d00a758                _sbd_memlayout
+                0x9d0109e4       0x2c c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+                0x9d0109e4                _stub_sbd_memlayout
+                0x9d0109e4                _sbd_memlayout
 
-.text.free      0x9d00a784       0x24
- .text.free     0x9d00a784       0x24 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
-                0x9d00a784                free
+.text.free      0x9d010a10       0x24
+ .text.free     0x9d010a10       0x24 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
+                0x9d010a10                free
 
 .text.INTRestoreInterrupts
-                0x9d00a7a8       0x1c
+                0x9d010a34       0x1c
  .text.INTRestoreInterrupts
-                0x9d00a7a8       0x1c c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
-                0x9d00a7a8                INTRestoreInterrupts
+                0x9d010a34       0x1c c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
+                0x9d010a34                INTRestoreInterrupts
 
 .text.CheKseg0CacheOff
-                0x9d00a7c4       0x18
+                0x9d010a50       0x18
  .text.CheKseg0CacheOff
-                0x9d00a7c4       0x18 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
-                0x9d00a7c4                CheKseg0CacheOff
+                0x9d010a50       0x18 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
+                0x9d010a50                CheKseg0CacheOff
 
 .text.CheKseg0CacheOn
-                0x9d00a7dc       0x18
+                0x9d010a68       0x18
  .text.CheKseg0CacheOn
-                0x9d00a7dc       0x18 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
-                0x9d00a7dc                CheKseg0CacheOn
+                0x9d010a68       0x18 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
+                0x9d010a68                CheKseg0CacheOn
 
-.text           0x9d00a7f4       0x18
- .text          0x9d00a7f4       0x18 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
-                0x9d00a7f4                _nmi_handler
+.text           0x9d010a80       0x18
+ .text          0x9d010a80       0x18 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
+                0x9d010a80                _nmi_handler
 
-.rodata         0x9d00a80c       0x10
- .rodata        0x9d00a80c       0x10 Objects\C32\uart2.o
-                0x9d00a80c                CharacterArray
+.rodata         0x9d010a98       0x10
+ .rodata        0x9d010a98       0x10 Objects\C32\uart2.o
+                0x9d010a98                CharacterArray
 
 .text._bootstrap_exception_handler
-                0x9d00a81c        0xc
+                0x9d010aa8        0xc
  .text._bootstrap_exception_handler
-                0x9d00a81c        0xc c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
-                0x9d00a81c                _bootstrap_exception_handler
+                0x9d010aa8        0xc c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+                0x9d010aa8                _bootstrap_exception_handler
 
 .text._general_exception_handler
-                0x9d00a828        0xc
+                0x9d010ab4        0xc
  .text._general_exception_handler
-                0x9d00a828        0xc c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
-                0x9d00a828                _general_exception_handler
+                0x9d010ab4        0xc c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
+                0x9d010ab4                _general_exception_handler
 
 .text.INTDisableInterrupts
-                0x9d00a834        0x8
+                0x9d010ac0        0x8
  .text.INTDisableInterrupts
-                0x9d00a834        0x8 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
-                0x9d00a834                INTDisableInterrupts
+                0x9d010ac0        0x8 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
+                0x9d010ac0                INTDisableInterrupts
 
 .text.INTEnableInterrupts
-                0x9d00a83c        0x8
+                0x9d010ac8        0x8
  .text.INTEnableInterrupts
-                0x9d00a83c        0x8 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
-                0x9d00a83c                INTEnableInterrupts
+                0x9d010ac8        0x8 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
+                0x9d010ac8                INTEnableInterrupts
 
 .text._on_reset
-                0x9d00a844        0x8
+                0x9d010ad0        0x8
  .text._on_reset
-                0x9d00a844        0x8 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
-                0x9d00a844                _on_reset
+                0x9d010ad0        0x8 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+                0x9d010ad0                _on_reset
 
 .text._on_bootstrap
-                0x9d00a84c        0x8
+                0x9d010ad8        0x8
  .text._on_bootstrap
-                0x9d00a84c        0x8 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
-                0x9d00a84c                _on_bootstrap
+                0x9d010ad8        0x8 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+                0x9d010ad8                _on_bootstrap
 
 .text.getpagesize
-                0x9d00a854        0x8
+                0x9d010ae0        0x8
  .text.getpagesize
-                0x9d00a854        0x8 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
-                0x9d00a854                getpagesize
-
-.text%z47       0x00000000        0x0
- .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
-
-.text%z48       0x00000000        0x0
- .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
-
-.text%z49       0x00000000        0x0
- .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
-
-.text%z50       0x00000000        0x0
- .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
+                0x9d010ae0        0x8 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
+                0x9d010ae0                getpagesize
 
 .text%z51       0x00000000        0x0
- .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(errno.o)
 
 .text%z52       0x00000000        0x0
- .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(general-exception.o)
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(sbrk.o)
 
 .text%z53       0x00000000        0x0
- .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(memcpy.o)
 
 .text%z54       0x00000000        0x0
- .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libc.a(malloc.o)
 
 .text%z55       0x00000000        0x0
- .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
 
 .text%z56       0x00000000        0x0
- .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(general-exception.o)
 
 .text%z57       0x00000000        0x0
- .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
 
 .text%z58       0x00000000        0x0
- .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
 
 .text%z59       0x00000000        0x0
- .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
 
 .text%z60       0x00000000        0x0
- .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_interrupts_lib.o)
 
 .text%z61       0x00000000        0x0
- .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib/./proc/32MX795F512H\processor.o
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_enable_mv_int_lib.o)
 
 .text%z62       0x00000000        0x0
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_restore_interrupts_lib.o)
+
+.text%z63       0x00000000        0x0
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(int_disable_interrupts_lib.o)
+
+.text%z64       0x00000000        0x0
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib\libmchp_peripheral_32MX795F512H.a(pcache.o)
+
+.text%z65       0x00000000        0x0
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.10/bin/../lib/gcc/pic32mx/4.5.1/../../../../pic32mx/lib/./proc/32MX795F512H\processor.o
+
+.text%z66       0x00000000        0x0
  .text          0x00000000        0x0 Objects\C32\usb_config.o

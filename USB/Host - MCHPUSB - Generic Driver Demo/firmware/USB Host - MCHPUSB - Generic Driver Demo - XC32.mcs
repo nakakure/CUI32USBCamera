@@ -2,20 +2,20 @@
 MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
 Version=1.0
 [File000]
-Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template\USB\Host - MCHPUSB - Generic Driver Demo\firmware\Objects\C32\main.o
+Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template(UVC)2\USB\Host - MCHPUSB - Generic Driver Demo\firmware\Objects\C32\main.o
 Folder=Intermediary
 DeviceName=PIC32MX795F512H
 LanguageToolSuiteID={62D235D8-2DB2-49CD-AF24-5489A6015337}
 LanguageToolID={DBB2B82D-3E10-4401-85A6-C9CB169D3E05}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc32\v1.10\bin\xc32-gcc.exe
 PPAD=$(BINDIR)||$(TMPDIR)|.\Objects\C32||$(AINDIR)||$(INCDIR)|.;..\..\..\Microchip\Include||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|main.c|usb_config.c|..\..\..\Microchip\Common\LCDBlocking.c|..\..\..\Microchip\Common\uart2.c|..\..\..\Microchip\USB\Generic Host Driver\usb_host_generic.c|..\..\..\Microchip\USB\usb_host.c|Delay.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|main.c|usb_config.c|..\..\..\Microchip\Common\LCDBlocking.c|..\..\..\Microchip\Common\uart2.c|..\..\..\Microchip\USB\Generic Host Driver\usb_host_generic.c|..\..\..\Microchip\USB\usb_host.c|Delay.c|tjpgd.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g
 TraceCmdString=
-DebugOptions=
+DebugOptions=-D__DEBUG
 [File001]
-Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template\USB\Host - MCHPUSB - Generic Driver Demo\firmware\Objects\C32\usb_config.o
+Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template(UVC)2\USB\Host - MCHPUSB - Generic Driver Demo\firmware\Objects\C32\usb_config.o
 Folder=Intermediary
 DeviceName=PIC32MX795F512H
 LanguageToolSuiteID={62D235D8-2DB2-49CD-AF24-5489A6015337}
@@ -26,9 +26,9 @@ SOLK=<src>|main.c|usb_config.c|..\..\..\Microchip\Common\LCDBlocking.c|..\..\..\
 SuiteArgsString=
 ToolArgsString=-g
 TraceCmdString=
-DebugOptions=
+DebugOptions=-D__DEBUG
 [File002]
-Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template\USB\Host - MCHPUSB - Generic Driver Demo\firmware\Objects\C32\LCDBlocking.o
+Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template(UVC)2\USB\Host - MCHPUSB - Generic Driver Demo\firmware\Objects\C32\LCDBlocking.o
 Folder=Intermediary
 DeviceName=PIC32MX795F512H
 LanguageToolSuiteID={62D235D8-2DB2-49CD-AF24-5489A6015337}
@@ -39,9 +39,9 @@ SOLK=<src>|main.c|usb_config.c|..\..\..\Microchip\Common\LCDBlocking.c|..\..\..\
 SuiteArgsString=
 ToolArgsString=-g
 TraceCmdString=
-DebugOptions=
+DebugOptions=-D__DEBUG
 [File003]
-Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template\USB\Host - MCHPUSB - Generic Driver Demo\firmware\Objects\C32\uart2.o
+Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template(UVC)2\USB\Host - MCHPUSB - Generic Driver Demo\firmware\Objects\C32\uart2.o
 Folder=Intermediary
 DeviceName=PIC32MX795F512H
 LanguageToolSuiteID={62D235D8-2DB2-49CD-AF24-5489A6015337}
@@ -52,9 +52,9 @@ SOLK=<src>|main.c|usb_config.c|..\..\..\Microchip\Common\LCDBlocking.c|..\..\..\
 SuiteArgsString=
 ToolArgsString=-g
 TraceCmdString=
-DebugOptions=
+DebugOptions=-D__DEBUG
 [File004]
-Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template\USB\Host - MCHPUSB - Generic Driver Demo\firmware\Objects\C32\usb_host_generic.o
+Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template(UVC)2\USB\Host - MCHPUSB - Generic Driver Demo\firmware\Objects\C32\usb_host_generic.o
 Folder=Intermediary
 DeviceName=PIC32MX795F512H
 LanguageToolSuiteID={62D235D8-2DB2-49CD-AF24-5489A6015337}
@@ -65,9 +65,9 @@ SOLK=<src>|main.c|usb_config.c|..\..\..\Microchip\Common\LCDBlocking.c|..\..\..\
 SuiteArgsString=
 ToolArgsString=-g
 TraceCmdString=
-DebugOptions=
+DebugOptions=-D__DEBUG
 [File005]
-Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template\USB\Host - MCHPUSB - Generic Driver Demo\firmware\Objects\C32\usb_host.o
+Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template(UVC)2\USB\Host - MCHPUSB - Generic Driver Demo\firmware\Objects\C32\usb_host.o
 Folder=Intermediary
 DeviceName=PIC32MX795F512H
 LanguageToolSuiteID={62D235D8-2DB2-49CD-AF24-5489A6015337}
@@ -78,9 +78,9 @@ SOLK=<src>|main.c|usb_config.c|..\..\..\Microchip\Common\LCDBlocking.c|..\..\..\
 SuiteArgsString=
 ToolArgsString=-g
 TraceCmdString=
-DebugOptions=
+DebugOptions=-D__DEBUG
 [File006]
-Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template\USB\Host - MCHPUSB - Generic Driver Demo\firmware\Objects\C32\Delay.o
+Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template(UVC)2\USB\Host - MCHPUSB - Generic Driver Demo\firmware\Objects\C32\Delay.o
 Folder=Intermediary
 DeviceName=PIC32MX795F512H
 LanguageToolSuiteID={62D235D8-2DB2-49CD-AF24-5489A6015337}
@@ -91,33 +91,46 @@ SOLK=<src>|main.c|usb_config.c|..\..\..\Microchip\Common\LCDBlocking.c|..\..\..\
 SuiteArgsString=
 ToolArgsString=-g
 TraceCmdString=
-DebugOptions=
+DebugOptions=-D__DEBUG
 [File007]
-Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template\USB\Host - MCHPUSB - Generic Driver Demo\firmware\USB Host - MCHPUSB - Generic Driver Demo - XC32.elf
-Folder=Output
+Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template(UVC)2\USB\Host - MCHPUSB - Generic Driver Demo\firmware\Objects\C32\tjpgd.o
+Folder=Intermediary
 DeviceName=PIC32MX795F512H
 LanguageToolSuiteID={62D235D8-2DB2-49CD-AF24-5489A6015337}
-LanguageToolID={A90E7C70-81C8-4500-B1F8-8560038BEFC0}
-LanguageToolLocation=C:\Program Files (x86)\Microchip\xc32\v1.10\bin\xc32-ld.exe
+LanguageToolID={DBB2B82D-3E10-4401-85A6-C9CB169D3E05}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc32\v1.10\bin\xc32-gcc.exe
 PPAD=$(BINDIR)||$(TMPDIR)|.\Objects\C32||$(AINDIR)||$(INCDIR)|.;..\..\..\Microchip\Include||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|main.c|usb_config.c|..\..\..\Microchip\Common\LCDBlocking.c|..\..\..\Microchip\Common\uart2.c|..\..\..\Microchip\USB\Generic Host Driver\usb_host_generic.c|..\..\..\Microchip\USB\usb_host.c|Delay.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|main.c|usb_config.c|..\..\..\Microchip\Common\LCDBlocking.c|..\..\..\Microchip\Common\uart2.c|..\..\..\Microchip\USB\Generic Host Driver\usb_host_generic.c|..\..\..\Microchip\USB\usb_host.c|Delay.c|tjpgd.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=--defsym=_min_heap_size=8192 -Map="$(BINDIR_)$(TARGETBASE).map" -o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)"
+ToolArgsString=-g
 TraceCmdString=
-DebugOptions=
+DebugOptions=-D__DEBUG
 [File008]
-Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template\USB\Host - MCHPUSB - Generic Driver Demo\firmware\USB Host - MCHPUSB - Generic Driver Demo - XC32.hex
+Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template(UVC)2\USB\Host - MCHPUSB - Generic Driver Demo\firmware\USB Host - MCHPUSB - Generic Driver Demo - XC32.elf
 Folder=Output
 DeviceName=PIC32MX795F512H
 LanguageToolSuiteID={62D235D8-2DB2-49CD-AF24-5489A6015337}
 LanguageToolID={A90E7C70-81C8-4500-B1F8-8560038BEFC0}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc32\v1.10\bin\xc32-ld.exe
 PPAD=$(BINDIR)||$(TMPDIR)|.\Objects\C32||$(AINDIR)||$(INCDIR)|.;..\..\..\Microchip\Include||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|main.c|usb_config.c|..\..\..\Microchip\Common\LCDBlocking.c|..\..\..\Microchip\Common\uart2.c|..\..\..\Microchip\USB\Generic Host Driver\usb_host_generic.c|..\..\..\Microchip\USB\usb_host.c|Delay.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|main.c|usb_config.c|..\..\..\Microchip\Common\LCDBlocking.c|..\..\..\Microchip\Common\uart2.c|..\..\..\Microchip\USB\Generic Host Driver\usb_host_generic.c|..\..\..\Microchip\USB\usb_host.c|Delay.c|tjpgd.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=--defsym=_min_heap_size=8192 -Map="$(BINDIR_)$(TARGETBASE).map" -o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)"
+ToolArgsString=--defsym=_min_heap_size=8096 -Map="$(BINDIR_)$(TARGETBASE).map" -o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)"
 TraceCmdString=
-DebugOptions=
+DebugOptions=--defsym=__MPLAB_DEBUG=1
+[File009]
+Location=C:\Users\i5\Dropbox\nakatani\project\CUI32_template(UVC)2\USB\Host - MCHPUSB - Generic Driver Demo\firmware\USB Host - MCHPUSB - Generic Driver Demo - XC32.hex
+Folder=Output
+DeviceName=PIC32MX795F512H
+LanguageToolSuiteID={62D235D8-2DB2-49CD-AF24-5489A6015337}
+LanguageToolID={A90E7C70-81C8-4500-B1F8-8560038BEFC0}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc32\v1.10\bin\xc32-ld.exe
+PPAD=$(BINDIR)||$(TMPDIR)|.\Objects\C32||$(AINDIR)||$(INCDIR)|.;..\..\..\Microchip\Include||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|main.c|usb_config.c|..\..\..\Microchip\Common\LCDBlocking.c|..\..\..\Microchip\Common\uart2.c|..\..\..\Microchip\USB\Generic Host Driver\usb_host_generic.c|..\..\..\Microchip\USB\usb_host.c|Delay.c|tjpgd.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=--defsym=_min_heap_size=8096 -Map="$(BINDIR_)$(TARGETBASE).map" -o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)"
+TraceCmdString=
+DebugOptions=--defsym=__MPLAB_DEBUG=1
 [TOOL_LOC_STAMPS]
 tool_loc{DBB2B82D-3E10-4401-85A6-C9CB169D3E05}=C:\Program Files (x86)\Microchip\xc32\v1.10\bin\xc32-gcc.exe
 tool_loc{A90E7C70-81C8-4500-B1F8-8560038BEFC0}=C:\Program Files (x86)\Microchip\xc32\v1.10\bin\xc32-ld.exe

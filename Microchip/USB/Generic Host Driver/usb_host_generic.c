@@ -287,6 +287,9 @@ BOOL USBHostGenericEventHandler ( BYTE address, USB_EVENT event, void *data, DWO
     // Handle specific events.
     switch (event)
     {
+	case EVENT_DATA_ISOC_READ:
+        USB_HOST_APP_EVENT_HANDLER(gc_DevData.ID.deviceAddress, EVENT_DATA_ISOC_READ, data, size );
+		break;
     case EVENT_DETACH:
         // Notify that application that the device has been detached.
         USB_HOST_APP_EVENT_HANDLER(gc_DevData.ID.deviceAddress, EVENT_GENERIC_DETACH, &gc_DevData.ID.deviceAddress, sizeof(BYTE) );

@@ -49,7 +49,7 @@ CLIENT_DRIVER_TABLE usbClientDrvTable[] =
     {
         USBHostGenericInit,
         USBHostGenericEventHandler,
-        0
+        USBHostGenericEventHandler
     }
 };
 
@@ -59,6 +59,6 @@ CLIENT_DRIVER_TABLE usbClientDrvTable[] =
 
 USB_TPL usbTPL[] =
 {
-    { INIT_VID_PID( 0x046Dul, 0xC526ul ), 0, 0, {0} }, // Microchip Custom Demo
+    { INIT_VID_PID( 0x046Dul, 0x0825ul ), 0, 0, {0} }, // Microchip Custom Demo
 };
 

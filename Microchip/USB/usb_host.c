@@ -31,7 +31,7 @@ USB_INTERRUPT_T1MSECIF equals 0x40.
 Software License Agreement
 
 The software supplied herewith by Microchip Technology Incorporated
-(the “Company”) for its PICmicro® Microcontroller is intended and
+(the “CompanyE for its PICmicro® Microcontroller is intended and
 supplied to you, the Company’s customer, for use solely and
 exclusively on Microchip PICmicro Microcontroller products. The
 software is owned by the Company and/or its supplier, and is
@@ -41,7 +41,7 @@ user to criminal sanctions under applicable laws, as well as to
 civil liability for the breach of the terms and conditions of this
 license.
 
-THIS SOFTWARE IS PROVIDED IN AN “AS IS” CONDITION. NO WARRANTIES,
+THIS SOFTWARE IS PROVIDED IN AN “AS ISECONDITION. NO WARRANTIES,
 WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED
 TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
 PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. THE COMPANY SHALL NOT,
@@ -661,14 +661,36 @@ BYTE USBHostIssueDeviceRequest( BYTE deviceAddress, BYTE bmRequestType, BYTE bRe
 
         // Make sure there are no transfers currently in progress on the current
         // interface setting.
+        /*pInterface = usbDeviceInfo.pInterfaceList;
+        while (pInterface)
+        {
+            UART2PrintString( "AAAAAAAAA=" );
+			UART2PutHexWord(pInterface->interface);
+	        UART2PrintString( "\r\n" );
+            pInterface = pInterface->next;
+	        pSetting = pInterface->pInterfaceSettings;
+	        while( pSetting)
+	        {
+	            UART2PrintString( "pSetting->interfaceAltSetting=" );
+				UART2PutHexWord(pSetting->interfaceAltSetting);
+		        UART2PrintString( "\r\n" );
+	            pSetting = pSetting->next;
+	        }
+
+        }*/
         pInterface = usbDeviceInfo.pInterfaceList;
         while (pInterface && (pInterface->interface != wIndex))
         {
             pInterface = pInterface->next;
+
         }
+            UART2PrintString( "AAAAAAAAA=" );
+			UART2PutHexWord(pInterface->interface);
+	        UART2PrintString( "\r\n" );
         if ((pInterface == NULL) || (pInterface->pCurrentSetting == NULL))
         {
             // The specified interface was not found.
+            UART2PrintString( "USB_ILLEGAL_REQUEST1\r\n" );
             return USB_ILLEGAL_REQUEST;
         }
         pEndpoint = pInterface->pCurrentSetting->pEndpointList;
@@ -677,10 +699,12 @@ BYTE USBHostIssueDeviceRequest( BYTE deviceAddress, BYTE bmRequestType, BYTE bRe
             if (!pEndpoint->status.bfTransferComplete)
             {
                 // An endpoint on this setting is still transferring data.
+            UART2PrintString( "USB_ILLEGAL_REQUEST2\r\n" );
                 return USB_ILLEGAL_REQUEST;
             }
             pEndpoint = pEndpoint->next;
         }
+
 
         // Make sure the new setting is valid.
         pSetting = pInterface->pInterfaceSettings;
@@ -690,12 +714,14 @@ BYTE USBHostIssueDeviceRequest( BYTE deviceAddress, BYTE bmRequestType, BYTE bRe
         }
         if (pSetting == NULL)
         {
+            UART2PrintString( "USB_ILLEGAL_REQUEST3\r\n" );
             return USB_ILLEGAL_REQUEST;
         }
 
         // Set the pointer to the new setting.
         pInterface->pCurrentSetting = pSetting;
     }
+            UART2PrintString( "USB_ILLEGAL_REQUEST4\r\n" );
 
     // If the user is doing a CLEAR FEATURE(ENDPOINT_HALT), we must reset DATA0 for that endpoint.
     if ((bRequest == USB_REQUEST_CLEAR_FEATURE) && (wValue == USB_FEATURE_ENDPOINT_HALT))
@@ -4688,8 +4714,15 @@ BOOL _USB_ParseConfigurationDescriptor( void )
     // Load up the values from the Configuration Descriptor
     bLength              = *ptr++;
     bDescriptorType      = *ptr++;
+    /*        UART2PrintString( "wTotalLength1" );
+			UART2PutHexWord(*ptr);
+	        UART2PrintString( "\r\n" );*///TODO
     wTotalLength         = *ptr++;           // In case these are not word aligned
+    /*        UART2PrintString( "wTotalLength2" );
+			UART2PutHexWord(*ptr);
+	        UART2PrintString( "\r\n" );*///TODO
     wTotalLength        += (*ptr++) << 8;
+
     bNumInterfaces       = *ptr++;
     currentConfiguration = *ptr++;  // bConfigurationValue
                             ptr++;  // iConfiguration
@@ -4710,6 +4743,9 @@ BOOL _USB_ParseConfigurationDescriptor( void )
     index += bLength;
     ptr    = &pCurrentConfigurationDescriptor[index];
 
+    /*        UART2PrintString( "wTotalLength" );
+			UART2PutHexWord(wTotalLength);
+	        UART2PrintString( "\r\n" );*///TODO
     while (!error && (index < wTotalLength))
     {
         // Check the descriptor length and type
@@ -4737,21 +4773,58 @@ BOOL _USB_ParseConfigurationDescriptor( void )
         }
 
         // Find an interface descriptor
+/*{
+				int j;
+            	UART2PrintString( " descriptor=" );
+				for(j = -2;j < bLength-2;j++){
+	            	UART2PutHex(*(ptr + j));
+				}
+            	UART2PrintString( "\r\n" );
+}*///TODO
         if (bDescriptorType != USB_DESCRIPTOR_INTERFACE)
         {
+			if(bDescriptorType == 0x24){
+			}
             // Skip over the rest of the Descriptor
             index += bLength;
             ptr = &pCurrentConfigurationDescriptor[index];
+            /*UART2PrintString( "Skip over the rest of the Descriptor" );
+			UART2PutHexWord(index);
+	        UART2PrintString( "\r\n" );*/
         }
         else
         {
             // Read some data from the interface descriptor
+            //UART2PrintString( " bInterfaceNumber" );
             bInterfaceNumber  = *ptr++;
+			//UART2PutHexWord(bInterfaceNumber);
+	        //UART2PrintString( "\r\n" );
+
+            //UART2PrintString( " bAlternateSetting" );
             bAlternateSetting = *ptr++;
+			//UART2PutHexWord(bAlternateSetting);
+	        //UART2PrintString( "\r\n" );
+
+            //UART2PrintString( " bNumEndpoints" );
             bNumEndpoints     = *ptr++;
+			//UART2PutHexWord(bNumEndpoints);
+	        //UART2PrintString( "\r\n" );
+
+            //UART2PrintString( " Class" );
             Class             = *ptr++;
+			//UART2PutHexWord(Class);
+	        //UART2PrintString( "\r\n" );
+
+            //UART2PrintString( " SubClass" );
             SubClass          = *ptr++;
+			//UART2PutHexWord(SubClass);
+	        //UART2PrintString( "\r\n" );
+
+            //UART2PrintString( " Protocol" );
             Protocol          = *ptr++;
+			//UART2PutHexWord(Protocol);
+	        //UART2PrintString( "\r\n" );
+
 
             // Get client driver index
             if (usbDeviceInfo.flags.bfUseDeviceClientDriver)

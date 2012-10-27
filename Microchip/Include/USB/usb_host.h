@@ -29,7 +29,7 @@ Summary:
 Software License Agreement
 
 The software supplied herewith by Microchip Technology Incorporated
-(the ìCompanyî) for its PICmicroÆ Microcontroller is intended and
+(the ìCompanyÅE for its PICmicroÆ Microcontroller is intended and
 supplied to you, the Companyís customer, for use solely and
 exclusively on Microchip PICmicro Microcontroller products. The
 software is owned by the Company and/or its supplier, and is
@@ -39,7 +39,7 @@ user to criminal sanctions under applicable laws, as well as to
 civil liability for the breach of the terms and conditions of this
 license.
 
-THIS SOFTWARE IS PROVIDED IN AN ìAS ISî CONDITION. NO WARRANTIES,
+THIS SOFTWARE IS PROVIDED IN AN ìAS ISÅECONDITION. NO WARRANTIES,
 WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED
 TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
 PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. THE COMPANY SHALL NOT,
@@ -461,6 +461,7 @@ typedef BOOL (*USB_CLIENT_INIT)   ( BYTE address, DWORD flags, BYTE clientDriver
   ***************************************************************************/
 #if defined( USB_HOST_APP_DATA_EVENT_HANDLER )
     BOOL USB_HOST_APP_DATA_EVENT_HANDLER ( BYTE address, USB_EVENT event, void *data, DWORD size );
+
 #else
     // If the application does not provide an event handler, then we will
     // assume that all events function without error.
@@ -1040,7 +1041,7 @@ BYTE    USBHostRead( BYTE deviceAddress, BYTE endpoint, BYTE *data, DWORD size )
     None
   ***************************************************************************/
 
-#define USBHostReadIsochronous( a, e, p ) USBHostRead( a, e, (BYTE *)p, (DWORD)0 );
+#define USBHostReadIsochronous( a, e, p ) USBHostRead( a, e, (BYTE *)p, (DWORD)0 )
 
 
 /****************************************************************************
